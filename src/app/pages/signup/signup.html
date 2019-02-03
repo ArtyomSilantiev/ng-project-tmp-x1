@@ -1,0 +1,24 @@
+<div class="page-signup">
+    <div class="form text-center">
+        <div>
+            <h2>Создать пользователя</h2>
+            <div>
+                Email<br>
+                <input [(ngModel)]="createUserEmail">
+            </div>
+            <div>
+                Пароль<br>
+                <input type="password" [(ngModel)]="createUserPassword">
+            </div>
+            <div>
+                Пароль ещё раз<br>
+                <input type="password" [(ngModel)]="createUserPasswordAgain">
+            </div>
+            <div>
+                <button class="btn btn-info" (click)="userCreate()">
+                    Создать пользователя
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

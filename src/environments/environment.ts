@@ -2,8 +2,15 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import * as _ from 'lodash';
+import * as _default from '../../env.angular.default.js';
+import * as _env from '../../env.angular.js';
+
+const env = _.merge(_default, _env);
+
 export const environment = {
-  production: false
+    production: true,
+    websocket: env.websocket
 };
 
 /*

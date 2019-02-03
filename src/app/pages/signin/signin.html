@@ -1,0 +1,18 @@
+<div class="page-signin">
+    <div class="form text-center">
+        <h2>Зайти за пользователя:</h2>
+        <div>
+            Email<br>
+            <input [(ngModel)]="loginEmail">
+        </div>
+        <div>
+            Пароль<br>
+            <input type="password" [(ngModel)]="loginPassword">
+        </div>
+        <div>
+            <button class="btn btn-info" (click)="login()">
+                Авторизироваться
+            </button>
+        </div>
+    </div>
+</div>

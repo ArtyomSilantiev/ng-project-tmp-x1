@@ -1,27 +1,44 @@
-# NgProjectTmpX1
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+# First install
 
-## Development server
+```bash
+npm install
+cp env.node.default.js env.node.js
+cp env.angular.default.js env.angular.js
+cp docker-compose.default.yml docker-compose.yml
+cp nginx.default.conf nginx.conf
+# add '127.0.0.1 app.local' to hosts 
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* need docker docker-compose
 
-## Code scaffolding
+# Run server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+docker-compose up
+ng serve
+curl localhost:4200
+```
 
-## Build
+# View docker container logs
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+docker logs -t -f app_nginx
+docker logs -t -f app_node1
+docker logs -t -f app_redis
+docker logs -t -f app_postgres
 
-## Running unit tests
+# Generate migrate 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npx makemigration --preview # preview migration changes
+npx makemigration # generate migration from models
+```
 
-## Running end-to-end tests
+# DB migrate
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+# docker-compose is up
+docker exec -t -i app_node1 sh # join to js app cont
+npm run migrate
+npm run seed
+```

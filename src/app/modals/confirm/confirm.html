@@ -1,0 +1,19 @@
+<div class="game-confirm-modal">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Подтверждение</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>
+            {{ question }}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span>
+            <button class="btn btn-danger" (click)="cancel()">Отмена</button>
+            <button class="btn btn-success" (click)="confirm()">Да</button>
+        </span>
+    </div>
+</div>

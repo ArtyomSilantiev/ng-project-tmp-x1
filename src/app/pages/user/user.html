@@ -1,0 +1,13 @@
+<div class="user-page">
+    <div class="user-info text-center">
+        <h2>Кабинет пользователя.</h2>
+        <div class="image">
+            <img src="{{ userModel.avatar ? '' : '/assets/images/default-avatar.jpg' }}">
+        </div>
+        <div class="info">
+            Id: {{ userModel.id }}<br>
+            Имя: {{ userModel.firsName ? userModel.firsName : '(пусто)' }}<br>
+            Фамилия: {{ userModel.lastName ? userModel.lastName : '(пусто)' }}<br>
+        </div>
+    </div>
+</div>

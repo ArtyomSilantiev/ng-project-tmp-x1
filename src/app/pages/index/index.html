@@ -1,0 +1,47 @@
+<span class="page-index text-center">
+    <div class="nav-menu">
+        <a class="nav-link" routerLink="/main" routerLinkActive="active">Главная</a>
+
+        <span *ngIf="!userService.isAuth">
+            <a class="nav-link" routerLink="/signin" routerLinkActive="active">Логин</a>
+            <a class="nav-link" routerLink="/signup" routerLinkActive="active">Регистрация</a>
+        </span>
+
+        <span *ngIf="userService.isAuth">
+            <a class="nav-link" routerLink="/shop" routerLinkActive="active">Магазин</a>
+            <a class="nav-link" routerLink="/tournaments" routerLinkActive="active">Турниры</a>
+            <a class="nav-link" routerLink="/user/{{ userService.user.id }}" routerLinkActive="active">Мой кабинет</a>
+            <a class="nav-link" (click)="logout($event)" href="#">Выйти из системы</a>
+        </span>
+    </div>
+
+    <div class="menu">
+        <div>
+            <button class="btn btn-sm btn-info btn-block" (click)="helloWs()">Send hello to ws</button>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-info btn-block" (click)="helloApi()">Send hello to api</button>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-info btn-block" (click)="openModal()" mdbWavesEffect>Open Modal</button>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-info btn-block" (click)="showNotify()" mdbWavesEffect>Show page notify</button>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-info btn-block" (click)="toogleFullScreen()">Toggle fullscreen</button>
+        </div>
+        <div>
+            <h4>Текущий пользователь:</h4>
+            <div *ngIf="userService.isAuth">
+                Ваш токен сессии: {{ userService.token }}<br>
+                Вы ауторизированы! <br>
+                Id пользователя: {{ userService.user.id }}
+            </div>
+            <div *ngIf="!userService.isAuth">
+                Ваш токен сессии: {{ userService.token }}<br>
+                Вы не авторизированный пользователь.
+            </div>
+        </div>
+    </div>
+</span>

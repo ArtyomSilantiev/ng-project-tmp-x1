@@ -1,0 +1,48 @@
+version: '3.5'
+services:
+    nginx:
+        image: nginx:latest
+        container_name: app_nginx
+        links:
+            - app1
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+            - ./:/var/local
+        ports:
+            - 80:80
+            - 443:443
+
+    app1:
+        image: node:alpine
+        container_name: app_node1
+        volumes:
+            - ./:/app
+        working_dir: /app
+        links:
+            - redis
+            - postgres
+        environment:
+            NODE_ENV: developent
+            IS_MASTER: 1
+        command: sh run_master.sh
+
+    redis:
+        image: redis:4.0.5-alpine
+        container_name: app_redis
+        command: ['redis-server', '--appendonly', 'yes']
+        hostname: redis
+        ports:
+            - '6379:6379'
+        volumes:
+            - '~/redis_data:/data'
+
+    postgres:
+        image: postgres:latest
+        container_name: app_postgres
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: 'postgres'
+        volumes:
+            - '~/postgresql_data:/var/lib/postgresql/data'
