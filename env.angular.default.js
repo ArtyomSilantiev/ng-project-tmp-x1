@@ -1,2 +1,4 @@
-module.exports = {};
+module.exports = {
+    websocket: 'http://app.local/'
+};
 

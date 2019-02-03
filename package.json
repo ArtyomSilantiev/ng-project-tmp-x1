@@ -9,7 +9,7 @@
     "seed-undo": "node ./node_modules/sequelize-cli/lib/sequelize db:seed:undo:all",
     "seed-create": "node ./node_modules/sequelize-cli/lib/sequelize seed:create",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --publicHost app.local --liveReload false",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -47,7 +47,7 @@
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "socket.io-redis": "^5.2.0",
-    "validator": "^10.10.0"
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",

@@ -3,6 +3,8 @@
 
 ```bash
 npm install
+npx sequelize init --force
+git checkout .
 cp env.node.default.js env.node.js
 cp env.angular.default.js env.angular.js
 cp docker-compose.default.yml docker-compose.yml

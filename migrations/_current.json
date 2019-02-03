@@ -1,0 +1,101 @@
+{
+    "tables": {
+        "sessions": {
+            "tableName": "sessions",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.BIGINT.UNSIGNED"
+                },
+                "token": {
+                    "allowNull": false,
+                    "unique": true,
+                    "field": "token",
+                    "seqType": "Sequelize.STRING"
+                },
+                "auth_code": {
+                    "unique": true,
+                    "field": "auth_code",
+                    "seqType": "Sequelize.STRING"
+                },
+                "user_id": {
+                    "field": "user_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "users",
+                        "key": "id"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.BIGINT.UNSIGNED"
+                },
+                "created_at": {
+                    "allowNull": false,
+                    "field": "created_at",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updated_at": {
+                    "allowNull": false,
+                    "field": "updated_at",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "users": {
+            "tableName": "users",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.BIGINT.UNSIGNED"
+                },
+                "email": {
+                    "allowNull": false,
+                    "unique": true,
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "role": {
+                    "defaultValue": {
+                        "value": "user"
+                    },
+                    "allowNull": false,
+                    "field": "role",
+                    "seqType": "Sequelize.ENUM('user', 'moderator', 'admin')"
+                },
+                "password_hash": {
+                    "field": "password_hash",
+                    "seqType": "Sequelize.STRING"
+                },
+                "avatar": {
+                    "field": "avatar",
+                    "seqType": "Sequelize.STRING"
+                },
+                "first_name": {
+                    "field": "first_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "last_name": {
+                    "field": "last_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "created_at": {
+                    "allowNull": false,
+                    "field": "created_at",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updated_at": {
+                    "allowNull": false,
+                    "field": "updated_at",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 1
+}
